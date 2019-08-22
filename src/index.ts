@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { MatchResult } from './MatchResult';
 
 const matches = fs
 	.readFileSync('football.csv', {
@@ -7,21 +8,10 @@ const matches = fs
 	.split('\n')
 	.map((row: string): string[] => row.split(','));
 
-let manUnitedWins = 0;
-
-for (let match of matches) {
-	if (match[1] === 'Man United' && match[5] === 'H') {
-		manUnitedWins++;
-	} else if (match[2] === 'Man United' && match[5] == 'A') {
-		manUnitedWins++;
-	}
-}
-
 const wins = matches.filter(
 	(match: String[]): boolean =>
-		(match[1] === 'Man United' && match[5] === 'H') ||
-		(match[2] === 'Man United' && match[5] == 'A')
+		(match[1] === 'Man United' && match[5] === MatchResult.HomeWin) ||
+		(match[2] === 'Man United' && match[5] === MatchResult.AwayWin)
 ).length;
 
-console.log(`Man United won ${manUnitedWins} games.`);
 console.log(`Man United won ${wins} games.`);
