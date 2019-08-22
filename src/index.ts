@@ -1,7 +1,8 @@
 import fs from 'fs';
 import { MatchResult } from './MatchResult';
 import { CsvFileReader } from './CsvFileReader';
-import { MatchReader, MatchData } from './MatchReader';
+import { MatchReader } from './MatchReader';
+import { MatchData } from './MatchData';
 
 const reader = new MatchReader('football.csv');
 reader.read();
