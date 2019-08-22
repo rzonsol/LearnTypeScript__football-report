@@ -6,7 +6,6 @@ import { ConsoleReport } from './reportTargets/ConsoleReport';
 
 const reader = new MatchReader('football.csv');
 reader.read();
-const matches = reader.data;
 
-const summary = new Summary(new WinAnalysis('Man United'), new ConsoleReport());
-summary.buildAndPrintReport(matches);
+const summary = new Summary(new WinAnalysis('Everton'), new ConsoleReport());
+summary.buildAndPrintReport(reader.data);
